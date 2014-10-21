@@ -6,8 +6,6 @@ create_hosts_file() {
   cat > /etc/hosts <<-EOF
 	127.0.0.1	localhost
 	::1		localhost ip6-localhost ip6-loopback
-	fe00::0		ip6-localnet
-	ff00::0		ip6-mcastprefix
 	ff02::1		ip6-allnodes
 	ff02::2		ip6-allrouters
 
@@ -23,13 +21,6 @@ create_networks_file() {
 	link-local	169.254.0.0
 
 EOF
-}
-
-update_rc() {
-  if dpkg --compare-versions "$2" lt "4.35ubuntu2~boot1"; then
-    update-rc.d -f networking remove >/dev/null
-  fi
-  update-rc.d networking start 35 0 6 . > /dev/null
 }
 
 # create bindv6only.conf on new installs and upgrades from << 4.38
@@ -64,7 +55,6 @@ case "$1" in
 	create_hosts_file
 	create_networks_file
     fi
-    update_rc
     #create_bindv6only_conf "$@"
     ;;
 

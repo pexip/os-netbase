@@ -158,6 +158,7 @@ microsoft-ds	445/tcp				# Microsoft Naked CIFS
 microsoft-ds	445/udp
 kpasswd		464/tcp
 kpasswd		464/udp
+urd		465/tcp		ssmtp smtps  # URL Rendesvous Directory for SSM
 saft		487/tcp			# Simple Asynchronous File Transfer
 saft		487/udp
 isakmp		500/tcp			# IPsec - Internet Security Association
@@ -172,6 +173,7 @@ npmp-gui	611/tcp		dqs313_execd		# npmp-gui / DQS
 npmp-gui	611/udp		dqs313_execd
 hmmp-ind	612/tcp		dqs313_intercell	# HMMP Indication / DQS
 hmmp-ind	612/udp		dqs313_intercell
+asf-rmcp	623/udp		# ASF Remote Management and Control Protocol
 qmqp		628/tcp
 qmqp		628/udp
 ipp		631/tcp				# Internet Printing Protocol
@@ -331,6 +333,7 @@ gds-db		3050/tcp	gds_db		# InterBase server
 gds-db		3050/udp	gds_db
 icpv2		3130/tcp	icp		# Internet Cache Protocol
 icpv2		3130/udp	icp
+iscsi-target	3260/tcp
 mysql		3306/tcp
 mysql		3306/udp
 nut		3493/tcp			# Network UPS Tools
@@ -352,6 +355,7 @@ remctl		4373/tcp		# Remote Authenticated Command Service
 remctl		4373/udp
 f5-iquery	4353/tcp			# F5 iQuery
 f5-iquery	4353/udp
+ipsec-nat-t	4500/udp			# IPsec NAT-Traversal [RFC3947]
 iax		4569/tcp			# Inter-Asterisk eXchange
 iax		4569/udp
 mtn		4691/tcp			# monotone Netsync Protocol
@@ -380,6 +384,7 @@ postgresql	5432/tcp	postgres	# PostgreSQL Database
 postgresql	5432/udp	postgres
 freeciv		5556/tcp	rptp		# Freeciv gameplay
 freeciv		5556/udp
+amqps		5671/tcp			# AMQP protocol over TLS/SSL
 amqp		5672/tcp
 amqp		5672/udp
 amqp		5672/sctp
@@ -450,6 +455,7 @@ zabbix-trapper	10051/tcp			# Zabbix Trapper
 zabbix-trapper	10051/udp
 amanda		10080/tcp			# amanda backup services
 amanda		10080/udp
+dicom		11112/tcp
 hkp		11371/tcp			# OpenPGP HTTP Keyserver
 hkp		11371/udp
 bprd		13720/tcp			# VERITAS NetBackup
@@ -464,6 +470,7 @@ bpcd		13782/tcp			# VERITAS NetBackup
 bpcd		13782/udp
 vopied		13783/tcp			# VERITAS NetBackup
 vopied		13783/udp
+db-lsp		17500/tcp			# Dropbox LanSync Protocol
 dcap		22125/tcp			# dCache Access Protocol
 gsidcap		22128/tcp			# GSI dCache Access Protocol
 wnn6		22273/tcp			# wnn6
@@ -515,7 +522,6 @@ supfiledbg	1127/tcp			# SUP debugging
 linuxconf	98/tcp				# LinuxConf
 poppassd	106/tcp				# Eudora
 poppassd	106/udp
-ssmtp		465/tcp		smtps		# SMTP over SSL
 moira-db	775/tcp		moira_db	# Moira database
 moira-update	777/tcp		moira_update	# Moira update protocol
 moira-ureg	779/udp		moira_ureg	# Moira user registration
@@ -566,6 +572,7 @@ nsca		5667/tcp			# Nagios Agent - NSCA
 mrtd		5674/tcp			# MRT Routing Daemon
 bgpsim		5675/tcp			# MRT Routing Simulator
 canna		5680/tcp			# cannaserver
+syslog-tls	6514/tcp			# Syslog over TLS [RFC5425]
 sane-port	6566/tcp	sane saned	# SANE network scanner daemon
 ircd		6667/tcp			# Internet Relay Chat
 zope-ftp	8021/tcp			# zope management by ftp
