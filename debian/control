@@ -6,7 +6,7 @@ XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ub
 XSBC-Original-Maintainer: Marco d'Itri <md@linux.it>
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 7)
-XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: netbase
 Architecture: all
