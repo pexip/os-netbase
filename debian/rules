@@ -38,7 +38,6 @@ binary-indep: install
 	dh_testroot
 	dh_installchangelogs
 	dh_installdocs
-	dh_installinit --noscripts --init-script=networking
 	dh_compress
 	dh_fixperms
 	dh_installdeb

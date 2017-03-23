@@ -1,28 +1,50 @@
-netbase (4.47ubuntu1pexip1) pexip; urgency=low
+netbase (5.3pexip1) pexip; urgency=low
 
-  * Prepare Pexip packaging
+  * Migrate to Jessie
 
- -- John-Mark Bell <jmb@pexip.com>  Tue, 24 Dec 2013 23:55:35 +0000
+ -- John-Mark Bell <jmb@pexip.com>  Thu, 23 Mar 2017 11:36:48 +0000
 
-netbase (4.47ubuntu1) precise; urgency=low
+netbase (5.3) unstable; urgency=medium
 
-  * Merge from Debian testing. Remaining Changes:
-    - debian/netbase.init:
-      + silence ifup/ifdown if VERBOSE == no
-      + silence debuging output if VERBOSE == no
-      + Temporarily increase usplash timeout to 120 seconds
-        to cope with slop DHCP server responses
-      + Replace the "start" command with a call to upstart-job
-    - debian/control: Depend on upstart-job
-    - debian/netbase.postinst:
-      + Remove old start symlinks on upgrade
-      + Only install symlinks for runlevel 0 and 6
-    * debian/netbase.init: adding initctl call to allow upstart jobs which
-      support networking to shutdown at the appropriate moment. just before
-      networking is deconfigured. This specifically addresses network-manager
-      stopping too soon.
+  * etc-services: added amqps (5671/tcp).
 
- -- Clint Byrum <clint@ubuntu.com>  Mon, 13 Feb 2012 10:21:02 -0800
+ -- Marco d'Itri <md@linux.it>  Tue, 21 Oct 2014 02:25:34 +0200
+
+netbase (5.2) unstable; urgency=low
+
+  * etc-services: added ipsec-nat-t (4500/udp). (Closes: #718210)
+  * etc-services: added syslog-tls (6514/tcp). (Closes: #729565)
+  * etc-services: added dicom (11112/tcp). (Closes: #710361)
+
+ -- Marco d'Itri <md@linux.it>  Mon, 30 Dec 2013 04:34:01 +0100
+
+netbase (5.1) unstable; urgency=low
+
+  * etc-services: removed console (782/tcp).
+    Reverted because #658077 was totally bogus: this entry is not useful.
+  * etc-services: added urd (465/tcp). ssmtp and smtps kept as aliases.
+    (Closes: #703175)
+  * etc-services: added db-lsp (17500/tcp). (Closes: #695708)
+  * etc-protocols: added hopopt (0). (Closes: #675339)
+  * Removed ip6-localnet and ip6-mcastprefix from the default /etc/hosts
+    created by postinst because they have no purpose. (Closes: #688090)
+  * Made the package Multi-Arch foreign. (Closes: #688396)
+  * Slightly raised the ifupdown Breaks version to match Ubuntu.
+
+ -- Marco d'Itri <md@linux.it>  Tue, 02 Apr 2013 02:31:27 +0200
+
+netbase (5.0) unstable; urgency=medium
+
+  * Removed the init script, added Breaks: ifupdown (<< 0.7~rc1).
+    (Closes: #595113)
+  * etc-services: added asf-rmcp (623/udp). (Closes: #657152)
+  * etc-services: added iscsi-target (3260/tcp). (Closes: #657178)
+  * etc-services: added console (782/tcp). (Closes: #658077)
+  * Starting from this release, TCP/UDP ports will be added only for the
+    actually implemented protocol even if IANA nowadays assigns both.
+  * Removed the obsolete dependency on initscripts.
+
+ -- Marco d'Itri <md@linux.it>  Mon, 14 May 2012 01:11:08 +0200
 
 netbase (4.47) unstable; urgency=low
 
@@ -38,26 +60,6 @@ netbase (4.47) unstable; urgency=low
 
  -- Marco d'Itri <md@linux.it>  Sun, 30 Oct 2011 16:22:13 +0100
 
-netbase (4.46ubuntu1) precise; urgency=low
-
-  * Merge from debian unstable.  Remaining changes:
-    - debian/netbase.init:
-      + silence ifup/ifdown if VERBOSE == no
-      + silence debuging output if VERBOSE == no
-      + Temporarily increase usplash timeout to 120 seconds
-        to cope with slop DHCP server responses
-      + Replace the "start" command with a call to upstart-job
-    - debian/control: Depend on upstart-job
-    - debian/netbase.postinst:
-      + Remove old start symlinks on upgrade
-      + Only install symlinks for runlevel 0 and 6
-    * debian/netbase.init: adding initctl call to allow upstart jobs which
-      support networking to shutdown at the appropriate moment. just before
-      networking is deconfigured. This specifically addresses network-manager
-      stopping too soon.
-
- -- Clint Byrum <clint@ubuntu.com>  Tue, 18 Oct 2011 00:10:20 -0700
-
 netbase (4.46) unstable; urgency=medium
 
   * etc-protocols: added mobility-header (135). (Closes: #630239)
@@ -69,37 +71,6 @@ netbase (4.46) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Sun, 26 Jun 2011 13:49:38 +0200
 
-netbase (4.45ubuntu3) oneiric; urgency=low
-
-  * Removing erroneous --wait commandline parameter.
-
- -- Clint Byrum <clint@ubuntu.com>  Tue, 24 May 2011 08:20:51 -0700
-
-netbase (4.45ubuntu2) oneiric; urgency=low
-
-  * debian/netbase.init: adding initctl call to allow upstart jobs which
-    support networking to shutdown at the appropriate moment. just before
-    networking is deconfigured. This specifically addresses network-manager
-    stopping too soon. (LP: #211631)
-
- -- Clint Byrum <clint@ubuntu.com>  Mon, 23 May 2011 12:01:29 -0700
-
-netbase (4.45ubuntu1) natty; urgency=low
-
-  * Merge from debian unstable. (LP: #721164) Remaining changes:
-    - debian/netbase.init:
-      + silence ifup/ifdown if VERBOSE == no
-      + silence debuging output if VERBOSE == no
-      + Temporarily increase usplash timeout to 120 seconds
-        to cope with slop DHCP server responses. LP: #21617
-      + Replace the "start" command with a call to upstart-job
-    - debian/control: Depend on upstart-job
-    - debian/netbase.postinst:
-      + Remove old start symlinks on upgrade
-      + Only install symlinks for runlevel 0 and 6
-
- -- Angel Abad <angelabad@ubuntu.com>  Fri, 18 Feb 2011 10:40:03 +0100
-
 netbase (4.45) unstable; urgency=high
 
   * etc-services: added 4691 (mtn). (Closes: #607858)
@@ -107,49 +78,12 @@ netbase (4.45) unstable; urgency=high
 
  -- Marco d'Itri <md@linux.it>  Wed, 19 Jan 2011 23:14:59 +0100
 
-netbase (4.44ubuntu1) natty; urgency=low
-
-  [Kay Roepke]
-  * Merge from debian unstable (LP: #681012), remaining changes:
-    - debian/netbase.init:
-      + silence ifup/ifdown if VERBOSE == no
-      + silence debuging output if VERBOSE == no
-      + Temporarily increase usplash timeout to 120 seconds
-        to cope with slop DHCP server responses. LP: #21617
-      + Replace the "start" command with a call to upstart-job
-    - debian/control: Depend on upstart-job
-    - debian/netbase.postinst:
-      + Remove old start symlinks on upgrade
-      + Only install symlinks for runlevel 0 and 6
-
- -- Scott Moser <smoser@ubuntu.com>  Tue, 14 Dec 2010 17:24:33 +0100
-
 netbase (4.44) unstable; urgency=medium
 
   * etc-services: added 5666 (nrpe/tcp), mysql-proxy (6446).
     (Closes: #604830)
 
  -- Marco d'Itri <md@linux.it>  Sun, 05 Dec 2010 19:59:54 +0100
-
-netbase (4.43ubuntu1) natty; urgency=low
-
-  * Merge from debian unstable (LP: #671193), remaining changes:
-    - debian/netbase.init:
-      + silence ifup/ifdown if VERBOSE == no
-      + silence debuging output if VERBOSE == no
-      + Temporarily increase usplash timeout to 120 seconds
-        to cope with slop DHCP server responses. LP: #21617
-      + Replace the "start" command with a call to upstart-job
-    - debian/control: Depend on upstart-job
-    - debian/netbase.postinst:
-      + Remove old start symlinks on upgrade
-      + Only install symlinks for runlevel 0 and 6
-  * Dropped changes:
-    - Don't deconfigure network interfaces if /etc/iscsi/iscsi.initramfs
-      exists, since that probably indicates root on iSCSI (LP: #447377): fixed
-      in debian
-
- -- Lorenzo De Liso <blackz@ubuntu.com>  Mon, 08 Nov 2010 12:25:31 +0100
 
 netbase (4.43) unstable; urgency=medium
 
@@ -226,38 +160,6 @@ netbase (4.36) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Sat, 04 Jul 2009 16:26:30 +0200
 
-netbase (4.35ubuntu3) lucid; urgency=low
-
-  * debian/netbase.init:
-    - Don't deconfigure network interfaces if /etc/iscsi/iscsi.initramfs
-      exists, since that probably indicates root on iSCSI (LP: #447377).
-
- -- Colin Watson <cjwatson@ubuntu.com>  Thu, 03 Dec 2009 16:05:30 +0000
-
-netbase (4.35ubuntu2) karmic; urgency=low
-
-  FFE LP: #427356.
-
-  * debian/netbase.init:
-    - Replace the "start" command with a call to upstart-job
-  * debian/control:
-    - Depend on upstart-job
-  * debian/netbase.postinst:
-    - Remove old start symlinks on upgrade
-    - Only install symlinks for runlevel 0 and 6
-
- -- Scott James Remnant <scott@ubuntu.com>  Tue, 15 Sep 2009 03:27:40 +0100
-
-netbase (4.35ubuntu1) karmic; urgency=low
-
-  * Merge from debian unstable (LP: #391214), remaining changes:
-    - debian/netbase.init: silence ifup/ifdown if VERBOSE == no
-    - debian/netbase.init: silence debuging output if VERBOSE == no
-    - debian/netbase.init: Temporarily increase usplash timeout to 120 seconds
-      to cope with slop DHCP server responses. LP: #21617
-
- -- Muharem Hrnjadovic <muharem@ubuntu.com>  Tue, 23 Jun 2009 18:36:11 +0200
-
 netbase (4.35) unstable; urgency=low
 
   * Do not add ff02::3 to /etc/hosts because it is not actually assigned.
@@ -268,25 +170,6 @@ netbase (4.35) unstable; urgency=low
   * etc-services: updated the description of mon. (Closes: #525322)
 
  -- Marco d'Itri <md@linux.it>  Wed, 17 Jun 2009 02:34:11 +0200
-
-netbase (4.34ubuntu2) jaunty; urgency=low
-
-  * Drop the net flag nonsense.
-
- -- Scott James Remnant <scott@ubuntu.com>  Thu, 05 Mar 2009 15:02:06 +0000
-
-netbase (4.34ubuntu1) jaunty; urgency=low
-
-  * Merge from debian unstable, remaining changes:
-    - introduce flag file for indicating the network has been
-      configured. This is needed so that ifupdown udev rules does not 'ifup'
-      the interface too early. Related to LP: #44194
-    - debian/netbase.init: silence ifup/ifdown if VERBOSE == no
-    - debian/netbase.init: silence debuging output if VERBOSE == no
-    - debian/netbase.init: Temporarily increase usplash timeout to 120 seconds
-      to cope with slop DHCP server responses. LP: #21617
-
- -- Scott James Remnant <scott@ubuntu.com>  Tue, 11 Nov 2008 17:15:28 +0000
 
 netbase (4.34) unstable; urgency=medium
 
@@ -303,24 +186,6 @@ netbase (4.33) unstable; urgency=medium
   * Recommends ifupdown instead of depending on it. (Closes: #484329)
 
  -- Marco d'Itri <md@linux.it>  Sat, 26 Jul 2008 00:59:20 +0200
-
-netbase (4.32ubuntu1) intrepid; urgency=low
-
-  * Merge from debian unstable, remaining changes:
-    - introduce flag file for indicating the network has been
-      configured. This is needed so that ifupdown udev rules does not 'ifup'
-      the interface too early. Related to LP: 44194
-    - debian/netbase.init: silence ifup/ifdown if VERBOSE == no
-    - debian/netbase.init: silence debuging output if VERBOSE == no
-    - debian/netbase.init: Temporarily increase usplash timeout to 120 seconds
-      to cope with slop DHCP server responses. (LP: 21617)
-  * netbase.preinst: removed. It would only affect pre-dapper upgrades which we don't
-    support anyways.
-  * netbase.postinst: dropped all ubuntu modifications. It would only
-    affect pre-dapper upgrades which we don't support anyways.
-  * debian/control: drop dependency on update-inetd.
-
- -- Reinhard Tartler <siretart@tauware.de>  Mon, 23 Jun 2008 16:22:45 +0200
 
 netbase (4.32) unstable; urgency=low
 
@@ -345,26 +210,6 @@ netbase (4.31) unstable; urgency=low
 
  -- Marco d'Itri <md@linux.it>  Sun, 23 Mar 2008 23:19:18 +0100
 
-netbase (4.30ubuntu2) intrepid; urgency=low
-
-  * introduce flag file for indicating the network has been
-    configured. This is needed so that ifupdown udev rules does not 'ifup'
-    the interface too early. Related to LP: #44194
-
- -- Reinhard Tartler <siretart@tauware.de>  Sat, 21 Jun 2008 23:22:40 +0200
-
-netbase (4.30ubuntu1) hardy; urgency=low
-
-  * Resynchronise with Debian. Remaining changes:
-    - Add transitional dependency on update-inetd, to be retained until
-      after 8.04.
-    - Drop /etc/network/options and migrate it to sysctl.conf.
-    - Start networking only once.
-  * Fix preinst to use dpkg-query rather than looking in
-    /var/lib/dpkg/status directly.
-
- -- Colin Watson <cjwatson@ubuntu.com>  Mon, 03 Dec 2007 21:09:55 +0000
-
 netbase (4.30) unstable; urgency=low
 
   * On new installs add localhost as an alias for ::1. (Closes: #427067)
@@ -378,25 +223,6 @@ netbase (4.30) unstable; urgency=low
   * etc-protocols: added udplite (136). (Closes: #411926)
 
  -- Marco d'Itri <md@linux.it>  Sun, 29 Jul 2007 00:25:17 +0200
-
-netbase (4.29ubuntu2) gutsy; urgency=low
-
-  * Restore dependency on tcpd so that we get /etc/hosts.allow and
-    /etc/hosts.deny by default (LP: #108379).
-  * Fix duplicate Maintainer in debian/control.
-
- -- Colin Watson <cjwatson@ubuntu.com>  Fri, 18 May 2007 10:10:34 +0100
-
-netbase (4.29ubuntu1) gutsy; urgency=low
-
-  * Merge from debian unstable, remaining changes:
-    - added dependency to update-inetd to ensure smooth upgrade for
-      packages that use update-inetd in their maintainer scripts (LP#96286)
-    - drop dependency on inet superserver
-    - drop /etc/network/options, migrate to sysctl
-    - start networking only once
-
- -- Michael Vogt <michael.vogt@ubuntu.com>  Mon, 14 May 2007 11:24:39 +0200
 
 netbase (4.29) unstable; urgency=high
 
@@ -417,22 +243,6 @@ netbase (4.28) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Sat,  6 Jan 2007 16:54:34 +0100
 
-netbase (4.27ubuntu2) feisty; urgency=low
-
-  * added dependency to update-inetd to ensure smooth upgrade for
-    packages that use update-inetd in their maintainer scripts (LP#96286)
-
- -- Michael Vogt <michael.vogt@ubuntu.com>  Fri, 30 Mar 2007 10:30:21 +0200
-
-netbase (4.27ubuntu1) feisty; urgency=low
-
-  * Merge from debian unstable, remaining changes:
-    - drop dependency on inet superserver
-    - drop /etc/network/options, migrate to sysctl
-    - start networking only once
-
- -- Scott James Remnant <scott@ubuntu.com>  Mon, 27 Nov 2006 13:33:44 +0000
-
 netbase (4.27) unstable; urgency=medium
 
   * Depend on inet-superserver instead of openbsd-inetd and tcpd.
@@ -452,22 +262,6 @@ netbase (4.26) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Sat, 19 Aug 2006 23:46:17 +0200
 
-netbase (4.25ubuntu2) edgy; urgency=low
-
-  * Remove stop links from rc0 and rc6
-
- -- Scott James Remnant <scott@ubuntu.com>  Fri, 21 Jul 2006 00:09:57 +0100
-
-netbase (4.25ubuntu1) edgy; urgency=low
-
-  * Merge from debian unstable, changes remaining:
-    - removal of dependency on inetd server,
-    - removal of options parsing,
-    - options to sysctl.conf migration,
-    - init script output changes.
-
- -- Scott James Remnant <scott@ubuntu.com>  Thu,  6 Jul 2006 10:26:20 +0100
-
 netbase (4.25) unstable; urgency=medium
 
   * etc-services: added msnp (1863), mmcc (5050), aol (5190),
@@ -478,27 +272,6 @@ netbase (4.25) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Fri, 24 Mar 2006 20:34:54 +0100
 
-netbase (4.24ubuntu3) dapper; urgency=low
-
-  * Give an [ok] when bringing down the network interfaces works and we're
-    not in verbose mode.
-
- -- Scott James Remnant <scott@ubuntu.com>  Thu, 11 May 2006 07:53:57 +0100
-
-netbase (4.24ubuntu2) dapper; urgency=low
-
-  * Move networking script back to S40.
-
- -- Scott James Remnant <scott@ubuntu.com>  Thu, 23 Feb 2006 15:26:58 +0000
-
-netbase (4.24ubuntu1) dapper; urgency=low
-
-  * Resynchronise with Debian.
-    - Manually fix up init script again.
-  * Migrate /etc/network/options to /etc/sysctl.conf settings.
-
- -- Scott James Remnant <scott@ubuntu.com>  Wed, 25 Jan 2006 17:16:36 +0000
-
 netbase (4.24) unstable; urgency=medium
 
   * etc-services: added nfs (2049). (Closes: #345836)
@@ -507,35 +280,6 @@ netbase (4.24) unstable; urgency=medium
     /etc/network/options. (Closes: #335471)
 
  -- Marco d'Itri <md@linux.it>  Tue,  3 Jan 2006 23:09:34 +0100
-
-netbase (4.23ubuntu4) dapper; urgency=low
-
-  * Move networking script from S40 to S50
-
- -- Scott James Remnant <scott@ubuntu.com>  Tue, 24 Jan 2006 18:12:37 +0000
-
-netbase (4.23ubuntu3) dapper; urgency=low
-
-  * Remove missed call to process_options.
-
- -- Scott James Remnant <scott@ubuntu.com>  Mon, 28 Nov 2005 10:15:38 +0000
-
-netbase (4.23ubuntu2) dapper; urgency=low
-
-  * If /etc/network/options is deprecated, then let's deprecate it!  See
-    README.Debian for details on what to do instead.
-
- -- Scott James Remnant <scott@ubuntu.com>  Tue, 22 Nov 2005 15:30:47 +0000
-
-netbase (4.23ubuntu1) dapper; urgency=low
-
-  * Resynchronise with Debian.
-    - Yes, really me.
-    - Preserve as much of the intent of both sets of init script changes
-      as possible.
-    - Still don't depend on netkit-inetd.
-
- -- Scott James Remnant <scott@ubuntu.com>  Tue, 08 Nov 2005 08:58:46 +0000
 
 netbase (4.23) unstable; urgency=medium
 
@@ -556,25 +300,6 @@ netbase (4.22) unstable; urgency=medium
   * Added the vi debconf translation. (Closes: #315810)
 
  -- Marco d'Itri <md@linux.it>  Sat, 24 Sep 2005 18:20:29 +0200
-
-netbase (4.21ubuntu3) breezy; urgency=low
-
-  * debian/netbase.init: Temporarily increase usplash timeout to 120 seconds
-    to cope with slop DHCP server responses. (Ubuntu #15394)
-
- -- Martin Pitt <martin.pitt@ubuntu.com>  Mon, 19 Sep 2005 13:05:12 +0200
-
-netbase (4.21ubuntu2) breezy; urgency=low
-
-  * Remove dependency on netkit-inetd
-
- -- Matt Zimmerman <mdz@ubuntu.com>  Tue, 19 Apr 2005 21:46:30 -0700
-
-netbase (4.21ubuntu1) breezy; urgency=low
-
-  * Resynchronise with Debian, resolving merge conflicts.
-
- -- Adam Conrad <adconrad@0c3.net>  Thu, 14 Apr 2005 23:36:07 -0600
 
 netbase (4.21) unstable; urgency=medium
 
@@ -601,32 +326,6 @@ netbase (4.20) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Thu, 27 Jan 2005 01:16:00 +0100
 
-netbase (4.19ubuntu4) hoary; urgency=low
-
-  * Display a more useful error message when failing to open
-    a device to redirect stdin/stdout/stderr
-
- -- Matt Zimmerman <mdz@ubuntu.com>  Thu,  3 Mar 2005 16:35:49 -0800
-
-netbase (4.19ubuntu3) hoary; urgency=low
-
-  * removed 'echo "rp_filter"' and replaced it with a proper
-    lsb-init-function (closes: #5401)
-
- -- Michael Vogt <mvo@debian.org>  Wed, 19 Jan 2005 09:31:13 +0100
-
-netbase (4.19ubuntu2) hoary; urgency=low
-
-  * Fix bashism in init script (closes: #4491).
-
- -- Matthias Klose <m@klose.in-berlin.de>  Sun,  2 Jan 2005 23:43:07 +0100
-
-netbase (4.19ubuntu1) hoary; urgency=low
-
-  * Resynchronise with Debian.
-
- -- LaMont Jones <lamont@canonical.com>  Thu, 11 Nov 2004 14:04:45 -0700
-
 netbase (4.19) unstable; urgency=medium
 
   * etc-services: added rtsp (554), hkp (11371), ospfapi (2607/tcp) and
@@ -636,12 +335,6 @@ netbase (4.19) unstable; urgency=medium
 
  -- Marco d'Itri <md@linux.it>  Sun, 31 Oct 2004 16:51:02 +0100
 
-netbase (4.18ubuntu1) hoary; urgency=low
-
-  * Resynchronise with Debian.
-
- -- Scott James Remnant <scott@canonical.com>  Wed, 27 Oct 2004 13:53:41 +0100
-
 netbase (4.18) unstable; urgency=high
 
   * etc-services: added snmp (161/tcp) and snmp-trap (162/tcp).
@@ -649,25 +342,6 @@ netbase (4.18) unstable; urgency=high
   * New debconf translation: cs. (Closes: #260364)
 
  -- Marco d'Itri <md@linux.it>  Wed, 28 Jul 2004 00:46:53 +0200
-
-netbase (4.17ubuntu3) warty; urgency=low
-
-  * debian/netbase.init: silence ifup/ifdown if VERBOSE == no
-  * debian/netbase.init: silence debuging output if VERBOSE == no
-
- -- Nathaniel McCallum <npmccallum@canonical.com>  Tue,  7 Sep 2004 16:03:20 -0400
-
-netbase (4.17ubuntu2) warty; urgency=low
-
-  * Added versioned depend on lsb-base
-
- -- Nathaniel McCallum <npmccallum@canonical.com>  Fri,  3 Sep 2004 15:07:08 -0400
-
-netbase (4.17ubuntu1) warty; urgency=low
-
-  * debian/netbase.init: pretty initscript
-
- -- Nathaniel McCallum <npmccallum@canonical.com>  Fri,  3 Sep 2004 11:33:59 -0400
 
 netbase (4.17) unstable; urgency=medium
 
@@ -895,4 +569,3 @@ netbase (4.04) unstable; urgency=low
     inetd thing.
 
  -- Anthony Towns <ajt@debian.org>  Thu, 31 Aug 2000 15:45:44 +1000
-
