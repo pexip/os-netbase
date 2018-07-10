@@ -1,3 +1,31 @@
+netbase (5.4) unstable; urgency=medium
+
+  * Stopped recommending ifupdown because nowadays there are options.
+    For the time being it will still be installed by default because it
+    has important priority. (Closes: #824884)
+  * services: added puppet (8140/tcp).
+  * services: added isns (3205). (Closes: #799047)
+  * services: added babel (6696/udp). (Closes: #814380)
+  * services: removed ircs (994).
+  * services: added ircs-u (6697/tcp).
+  * services: removed mtp (57/tcp).
+  * services: removed rje (77/tcp).
+  * services: removed prospero (191), prospero-np (1525).
+  * services: removed ssh (22/udp).
+  * services: removed gopher (70/udp).
+  * services: removed http (80/udp), https (443/udp).
+  * services: removed uucp-path (117/tcp).
+  * services: removed pop2 (109), imap3 (220).
+  * services: removed pop3 (110/udp), imap2 (143/udp), imaps (993/udp),
+    pop3s (995/udp).
+  * services: removed remove bgp (179/udp).
+  * services: removed remove nntps (563/udp).
+  * services: removed remove submission (587/udp).
+  * services: removed remove rsync (873/udp).
+  * services: removed telnets (992/udp).
+
+ -- Marco d'Itri <md@linux.it>  Mon, 26 Dec 2016 02:56:39 +0100
+
 netbase (5.3pexip1) pexip; urgency=low
 
   * Migrate to Jessie
