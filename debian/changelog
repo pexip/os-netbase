@@ -1,3 +1,9 @@
+netbase (5.4pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:32:01 +0000
+
 netbase (5.4) unstable; urgency=medium
 
   * Stopped recommending ifupdown because nowadays there are options.
