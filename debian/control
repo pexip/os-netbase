@@ -2,10 +2,10 @@ Source: netbase
 Section: admin
 Priority: important
 Maintainer: Marco d'Itri <md@linux.it>
-Standards-Version: 3.9.8
-Build-Depends: debhelper (>= 9)
-Vcs-Git: https://anonscm.debian.org/git/users/md/netbase.git
-Vcs-Browser: https://anonscm.debian.org/cgit/users/md/netbase.git
+Standards-Version: 4.3.0.1
+Build-Depends: debhelper-compat (= 12)
+Vcs-Git: https://salsa.debian.org/md/netbase.git
+Vcs-Browser: https://salsa.debian.org/md/netbase
 
 Package: netbase
 Architecture: all
@@ -14,3 +14,6 @@ Depends: ${misc:Depends}
 Description: Basic TCP/IP networking system
  This package provides the necessary infrastructure for basic TCP/IP based
  networking.
+ .
+ In particular, it supplies tables of common name-to-number mappings in
+ /etc/services, /etc/rpc, and /etc/protocols.
