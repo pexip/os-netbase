@@ -7,7 +7,7 @@ Standards-Version: 4.3.0.1
 Build-Depends: debhelper-compat (= 12)
 Vcs-Git: https://salsa.debian.org/md/netbase.git
 Vcs-Browser: https://salsa.debian.org/md/netbase
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
 
 Package: netbase
 Architecture: all
