@@ -1,3 +1,104 @@
+netbase (6.3) unstable; urgency=medium
+
+  * services: added ntske (4460/tcp). (Closes: #983592)
+  * services: removed the disclaimer about non-used transports.
+    It is not relevant anymore because all such entries for ports assigned to
+    non-used transports should have been removed starting from release 5.4.
+
+ -- Marco d'Itri <md@linux.it>  Sat, 27 Mar 2021 23:33:28 +0100
+
+netbase (6.2) unstable; urgency=medium
+
+  * services: added https (443/udp) which was removed in 5.4 but now is
+    actually starting to be meaningful due to HTTP/3. (Closes: #969591)
+  * services: added ldp (646).
+  * services: added redis (6379/tcp). (Closes: #958302)
+  * services: removed some historical or not actually used ports:
+    poppassd (106/udp), netbios-ns (137/tcp), netbios-dgm (138/tcp),
+    netbios-ssn (139/udp), microsoft-ds (445/udp), ms-sql-s (1433/udp),
+    ms-sql-m (1434/tcp), support (1529/tcp), cfinger (2003/tcp),
+    frox (2121/tcp), afbackup (2988), afmbackup (2989), distcc (3632/udp),
+    daap (3689/udp), svn (3690/udp), suucp (4031/udp), sysrqd (4094/udp),
+    f5-iquery (4353/udp), epmd (4369/udp), remctl (4373/udp), iax (4569/tcp),
+    distmp3 (4600/tcp), mtn (4691/udp), radmin-port (4899/udp),
+    enbd-cstatd (5051/tcp), enbd-sstatd (5052/tcp), pcrd (5151/tcp),
+    noclog (5354), hostmon (5355), amqp (5672/udp), mrtd (5674/tcp),
+    bgpsim (5675/tcp), afs3-fileserver (7000/tcp), afs3-callback (7001/tcp),
+    afs3-prserver (7002/tcp), afs3-vlserver (7003/tcp),
+    afs3-volser (7005/tcp), afs3-errors (7006), afs3-bos (7007/tcp),
+    afs3-update (7008/tcp), afs3-rmtsys (7009/tcp), omniorb (8088/udp),
+    mandelspawn (9359/udp), smsqp (11201), xpilot (15345), isdnlog (20011),
+    vboxd (20012).
+
+ -- Marco d'Itri <md@linux.it>  Sun, 04 Oct 2020 18:06:02 +0200
+
+netbase (6.1) unstable; urgency=medium
+
+  * services: added isakmp (500/udp) which was removed by mistake in
+    6.0 instead of the UDP service. (Closes: #946138)
+  * services: removed some historical or not actually used ports:
+    isakmp (500/tcp), socks (1080/udp), ingreslock (1524/udp),
+    kermit (1649/udp), groupwise (1677/udp), l2f (1701/tcp), msnp (1863),
+    unix-status (1957/tcp), log-server (1958/tcp), remoteping (1959/tcp),
+    cisco-sccp (2000/udp), search (2010/tcp), pipe-server (2010/tcp),
+    gsigatekeeper (2119/udp), gris (2135/udp), cvspserver (2401/udp),
+    dict (2628/udp), f5-globalsite (2792/udp), gsiftp (2811/udp),
+    gpsd (2947/udp), gds-db (3050/udp), mysql (3306/udp).
+
+ -- Marco d'Itri <md@linux.it>  Mon, 17 Feb 2020 00:22:04 +0100
+
+netbase (6.0) unstable; urgency=medium
+
+  * Taken over /etc/ethertypes from ebtables, but without many historical
+    entries and with the addition of some modern protocols (see #946932).
+  * services: added alias syslog (514/tcp).
+  * services: added ms-wbt-server (3389/tcp).
+  * services: removed some historical or not actually used ports:
+    msp (18), nameserver (42/tcp), link (87/tcp), epmap (135/udp),
+    xdmcp (177/tcp), nextstep (178), irc (194), smux (199/udp),
+    at-rtmp (201), at-nbp (202), at-echo (204), at-zis (206), qmtp (209/udp),
+    z3950 (210/udp), ipx (213/tcp), pawserv (345/udp), zserv (346/udp),
+    clearcase (371/tcp), ulistserv (372), imsp (406), snpp (444/udp),
+    saft (487/udp), isakmp (500/udp), timed (525/udp), tempo (526/tcp),
+    courier (530/tcp), conference (531/tcp), netnews (532/tcp),
+    netwall (533/udp), dhcpv6-client (546/tcp), dhcpv6-server (547/tcp),
+    afpovertcp (548/udp), idfp (549), remotefs (556/tcp), nqs (607/udp),
+    npmp-local (610), npmp-gui (611), hmmp-ind (612), qmqp (628/udp),
+    ipp (631/udp), silc (706/udp), webster (765), proofd (1093/udp),
+    rootd (1094/udp), rmiregistry (1099/udp), kazaa (1214), nessus (1241)
+    and lotusnote (1352/udp).
+
+ -- Marco d'Itri <md@linux.it>  Fri, 27 Dec 2019 01:47:52 +0100
+
+netbase (5.8) unstable; urgency=medium
+
+  * services: added amanda (10080/tcp) which was removed by mistake in
+    5.8 instead of the UDP service. (Closes: #946138)
+  * services: removed some historical or not actually used ports:
+    swat (901/tcp), kpop (1109/tcp), knetd (2053/tcp), amanda (10080/udp),
+    kamanda (10081/udp).
+  * services: removed an obsolete comment about Kerberos v4/v5.
+
+ -- Marco d'Itri <md@linux.it>  Fri, 06 Dec 2019 11:59:25 +0100
+
+netbase (5.7) unstable; urgency=medium
+
+  * services: removed some historical or not actually used ports:
+    fatserv (347), rlp (39/udp), sftp (115/tcp), mailq (174/udp),
+    aol (5190), rfe (5002), mmcc (5050), xmpp-client (5222/udp),
+    xmpp-server (5269/udp), cfengine (5308/udp), mdns (5353/tcp),
+    postgresql (5432/udp), freeciv (5556/udp), ggz (5688), x11 (6000/udp)
+    and x11-*, sge-qmaster (6444/udp), sge-execd (6445/udp),
+    mysql-proxy (6446/udp), font-service (7100/udp), http-alt (8080/udp),
+    bacula-dir (9101/udp) and bacula-*, xmms2 (9667/udp),
+    zabbix-agent (10050/udp), zabbix-trapper (10051/udp),
+    amanda (10080/tcp), hkp (11371/udp), bprd (13720) and more,
+    wnn6 (22273/udp), krbupdate (760/tcp), eklogin (2105/tcp),
+    kx (2111/tcp), omirr (808), customs (1001), wipld (1300/tcp),
+    ninstall (2150), xtell (4224/tcp)
+
+ -- Marco d'Itri <md@linux.it>  Mon, 25 Nov 2019 05:30:19 +0100
+
 netbase (5.6pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment
