@@ -1,3 +1,9 @@
+netbase (6.3pexip1) pexip; urgency=medium
+
+  * Initial bullseye build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 02 Jun 2022 14:42:36 +0100
+
 netbase (6.3) unstable; urgency=medium
 
   * services: added ntske (4460/tcp). (Closes: #983592)
