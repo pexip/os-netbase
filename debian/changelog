@@ -1,3 +1,15 @@
+netbase (6.4) unstable; urgency=medium
+
+  * protocols: added ethernet (143).
+  * protocols: added mptcp (262). (Closes: #1020331)
+  * rpc: added alias rpcbind (100000).
+  * rpc: added nfs_acl (100227). (Closes: #1019973)
+  * ethertypes: added LoWPAN (A0ED).
+  * Added an autopkgtest.
+  * Made debian/copyright machine-readable. (Closes: #1021035)
+
+ -- Marco d'Itri <md@linux.it>  Tue, 18 Oct 2022 08:45:44 +0200
+
 netbase (6.3) unstable; urgency=medium
 
   * services: added ntske (4460/tcp). (Closes: #983592)
