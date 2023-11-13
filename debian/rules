@@ -3,7 +3,7 @@
 D := $(CURDIR)/debian/netbase
 
 %:
-	dh $@ $(NO_PACKAGE)
+	dh $@
 
 override_dh_auto_test:
 #	check for duplicate etc/services entries and abort if any found
